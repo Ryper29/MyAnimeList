@@ -1,0 +1,917 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+/* =========================================================
+   THEME: WARM EDITORIAL DARK
+   TARGET: MyAnimeList Modern List (Anime & Manga)
+   ========================================================= */
+
+:root {
+    color-scheme: dark;
+
+    --bg-page: #111216;
+    --bg-surface: #171920;
+    --bg-hover: #1c1f27;
+    --border-subtle: #22252e;
+    --border-strong: #323746;
+
+    --text-primary: #f1eee8;
+    --text-secondary: #9ba3b4;
+    --text-muted: #828b9e;
+
+    --accent: #e0a458;
+    --accent-soft: rgba(224, 164, 88, 0.14);
+
+    /* Semantic Status Colors */
+    --status-watching: #52b788;
+    --status-completed: #5b8fd9;
+    --status-onhold: #e0a458;
+    --status-dropped: #d96b75;
+    --status-ptw: #767f94;
+
+    --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* --- 1. BASE & LAYOUT --- */
+html {
+    scrollbar-color: #292d38 var(--bg-page);
+    scrollbar-width: thin;
+}
+
+body,
+body.ownlist {
+    background-color: var(--bg-page) !important;
+    background-image: none !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-sans) !important;
+    -webkit-font-smoothing: antialiased !important;
+    margin: 0 !important;
+}
+
+.list-container {
+    background-color: transparent !important;
+    border: none !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+    max-width: 980px !important;
+    padding: 0 28px 84px !important;
+    width: 100% !important;
+}
+
+.list-block,
+.list-unit {
+    background: transparent !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.cover-block {
+    display: none !important;
+}
+
+/* --- 2. TOP BAR (MAL HEADER) --- */
+.header {
+    background-color: var(--bg-page) !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    box-sizing: border-box !important;
+    color: var(--text-secondary) !important;
+    height: 64px !important;
+    margin: 0 auto !important;
+    max-width: 980px !important;
+    overflow: visible !important;
+    padding: 0 28px !important;
+    position: relative !important;
+    width: 100% !important;
+    z-index: 50 !important;
+}
+
+.header .header-title {
+    left: 28px !important;
+    opacity: 0.9 !important;
+    top: 18px !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.header .header-title:hover {
+    opacity: 1 !important;
+}
+
+.header .header-menu {
+    right: 28px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.header .header-menu .btn-menu,
+.header .header-menu .header-info,
+.header .header-menu a {
+    color: var(--text-secondary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 12.5px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+}
+
+.header .header-menu a:hover {
+    color: var(--text-primary) !important;
+}
+
+.header .header-menu .list-menu {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55) !important;
+    margin-top: 6px !important;
+    overflow: hidden !important;
+    top: 100% !important;
+    z-index: 60 !important;
+}
+
+.header .header-menu .list-menu .icon-menu {
+    background-color: transparent !important;
+    color: var(--text-secondary) !important;
+}
+
+.header .header-menu .list-menu .icon-menu:hover {
+    background-color: var(--bg-hover) !important;
+    color: var(--text-primary) !important;
+}
+
+.header .header-menu .list-menu .icon-menu svg.icon {
+    fill: var(--text-secondary) !important;
+}
+
+/* --- 3. STATUS NAVIGATION & SEARCH --- */
+.status-menu-container {
+    background-color: rgba(17, 18, 22, 0.92) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    height: auto !important;
+    position: sticky !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 40 !important;
+}
+
+.status-menu-container .status-menu {
+    align-items: center !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    padding-right: 40px !important;
+    width: 100% !important;
+}
+
+.status-menu-container .status-menu .status-button {
+    border-bottom: 2px solid transparent !important;
+    color: var(--text-secondary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0 !important;
+    padding: 16px 14px 14px !important;
+    text-transform: none !important;
+    transition: color 0.18s ease, border-color 0.18s ease !important;
+}
+
+.status-menu-container .status-menu .status-button::after {
+    display: none !important;
+}
+
+.status-menu-container .status-menu .status-button:hover {
+    color: var(--text-primary) !important;
+    text-decoration: none !important;
+}
+
+.status-menu-container .status-menu .status-button.on {
+    border-bottom: 2px solid var(--accent) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+/* Search Box */
+.status-menu-container .search-container {
+    right: 0 !important;
+    top: 12px !important;
+    transform: none !important;
+}
+
+.status-menu-container .search-container #search-box.open {
+    width: 175px !important;
+}
+
+.status-menu-container .search-container #search-box input {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 6px !important;
+    box-sizing: border-box !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 12.5px !important;
+    outline: none !important;
+    padding: 6px 10px !important;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease !important;
+}
+
+.status-menu-container .search-container #search-box input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 2px var(--accent-soft) !important;
+}
+
+.status-menu-container .search-container #search-button {
+    color: var(--text-secondary) !important;
+}
+
+.status-menu-container .search-container #search-button:hover {
+    color: var(--accent) !important;
+}
+
+/* --- 4. SECTION HEADER & STATS --- */
+.list-unit .list-status-title {
+    align-items: baseline !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--border-strong) !important;
+    display: flex !important;
+    height: auto !important;
+    justify-content: space-between !important;
+    margin: 36px 0 0 !important;
+    padding: 0 0 14px !important;
+    width: 100% !important;
+}
+
+.list-unit .list-status-title .text {
+    color: var(--text-primary) !important;
+    font-family: var(--font-display) !important;
+    font-size: 26px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
+    width: auto !important;
+}
+
+.list-unit .list-status-title .stats {
+    display: flex !important;
+    gap: 16px !important;
+    height: auto !important;
+    line-height: 1 !important;
+    position: static !important;
+}
+
+.list-unit .list-status-title .stats a {
+    color: var(--text-secondary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0 !important;
+    margin: 0 !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    transition: color 0.18s ease !important;
+}
+
+.list-unit .list-status-title .stats a:hover {
+    color: var(--accent) !important;
+}
+
+.list-unit .list-stats {
+    background-color: var(--bg-surface) !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+    box-sizing: border-box !important;
+    color: var(--text-secondary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 12.5px !important;
+    height: auto !important;
+    line-height: 1.8 !important;
+    padding: 12px 18px !important;
+    width: 100% !important;
+}
+
+/* --- 5. EDITORIAL TABLE (FIX WHITE HEADER BAR) --- */
+.list-table {
+    background-color: var(--bg-page) !important;
+    border: none !important;
+    border-collapse: collapse !important;
+    display: table !important;
+    width: 100% !important;
+}
+
+.list-table tbody,
+.list-table tr.list-table-header,
+.list-table .list-table-header,
+.list-table .list-table-header th,
+.list-table .list-table-header .header-title {
+    background: var(--bg-page) !important;
+    background-color: var(--bg-page) !important;
+    background-image: none !important;
+}
+
+.list-table .list-table-header .header-title {
+    border-bottom: 1px solid var(--border-subtle) !important;
+    color: var(--text-muted) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    height: 42px !important;
+    letter-spacing: 0.02em !important;
+    padding: 0 10px !important;
+    text-transform: none !important;
+    vertical-align: middle !important;
+}
+
+.list-table .list-table-header .header-title.status {
+    padding: 0 !important;
+    width: 3px !important;
+}
+
+.list-table .list-table-header .header-title.image,
+.list-table .list-table-header .header-title a.link,
+.list-table .list-table-header .header-title a.link.sort {
+    color: var(--text-muted) !important;
+    opacity: 1 !important;
+    text-decoration: none !important;
+    transition: color 0.18s ease !important;
+}
+
+.list-table .list-table-header .header-title a.link.sort:hover {
+    color: var(--text-primary) !important;
+}
+
+.list-table .list-table-header .header-title.title {
+    padding-left: 16px !important;
+    text-align: left !important;
+}
+
+.list-table .list-table-header .header-title.image,
+.list-table .list-table-header .header-title.score,
+.list-table .list-table-header .header-title.type,
+.list-table .list-table-header .header-title.progress,
+.list-table .list-table-header .header-title.chapter,
+.list-table .list-table-header .header-title.volume {
+    text-align: center !important;
+}
+
+/* Baris Item */
+.list-table .list-item {
+    background-color: transparent !important;
+}
+
+.list-table .list-table-data {
+    border-bottom: 1px solid var(--border-subtle) !important;
+    transition: background-color 0.16s ease !important;
+}
+
+.list-table .list-table-data .data {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 13px 10px !important;
+    vertical-align: middle !important;
+}
+
+.list-table .list-table-data .data:not(.status) {
+    transition: background-color 0.16s ease !important;
+}
+
+.list-table .list-table-data:hover,
+.list-table .list-table-data:hover .data:not(.status) {
+    background-color: var(--bg-hover) !important;
+}
+
+/* --- 6. KOLOM DATA --- */
+
+/* Status Indicator (warna semantik lembut di tepi kiri) */
+.list-table .list-table-data .data.status {
+    padding: 0 !important;
+    width: 3px !important;
+}
+
+.list-table .list-table-data .data.status.watching,
+.list-table .list-table-data .data.status.reading {
+    background-color: var(--status-watching) !important;
+}
+
+.list-table .list-table-data .data.status.completed {
+    background-color: var(--status-completed) !important;
+}
+
+.list-table .list-table-data .data.status.onhold {
+    background-color: var(--status-onhold) !important;
+}
+
+.list-table .list-table-data .data.status.dropped {
+    background-color: var(--status-dropped) !important;
+}
+
+.list-table .list-table-data .data.status.plantowatch,
+.list-table .list-table-data .data.status.plantoread {
+    background-color: var(--status-ptw) !important;
+}
+
+/* Nomor Urut */
+.list-table .list-table-data .data.number {
+    color: var(--text-muted) !important;
+    font-size: 12px !important;
+    font-variant-numeric: tabular-nums !important;
+    text-align: center !important;
+    width: 40px !important;
+}
+
+/* Thumbnail Poster (Full Color, tanpa grayscale) */
+.list-table .list-table-data .data.image {
+    padding: 10px 6px !important;
+    width: 52px !important;
+}
+
+.list-table .list-table-data .data.image .link {
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 5px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    height: 64px !important;
+    line-height: 0 !important;
+    overflow: hidden !important;
+    transition: border-color 0.25s ease !important;
+    width: 45px !important;
+}
+
+.list-table .list-table-data .data.image .image {
+    border: none !important;
+    border-radius: 0 !important;
+    display: block !important;
+    filter: none !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.25s ease !important;
+    width: 100% !important;
+}
+
+.list-table .list-table-data:hover .data.image .link {
+    border-color: rgba(224, 164, 88, 0.45) !important;
+}
+
+.list-table .list-table-data:hover .data.image .image {
+    transform: scale(1.05) !important;
+}
+
+/* Judul Anime / Manga & Catatan */
+.list-table .list-table-data .data.title {
+    padding-left: 16px !important;
+    position: relative !important;
+    text-align: left !important;
+}
+
+.list-table .list-table-data .data.title .link {
+    color: var(--text-primary) !important;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.01em !important;
+    line-height: 1.45 !important;
+    text-decoration: none !important;
+    transition: color 0.16s ease !important;
+}
+
+.list-table .list-table-data:hover .data.title .link {
+    color: #ffffff !important;
+}
+
+/* Status Airing / Rewatching (tanpa kotak agar elemen kosong tak muncul) */
+.list-table .list-table-data .data.title .rewatching:empty,
+.list-table .list-table-data .data.title .content-status:empty {
+    display: none !important;
+}
+
+.list-table .list-table-data .data.title .rewatching,
+.list-table .list-table-data .data.title .content-status {
+    background: none !important;
+    border: none !important;
+    color: var(--accent) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    margin-left: 8px !important;
+    padding: 0 !important;
+}
+
+/* Notes: catatan yang sudah ditulis tetap tampil, tombol "Add notes" muncul saat hover/fokus */
+.list-table .list-table-data .data.title .notes {
+    margin-top: 3px !important;
+    width: auto !important;
+}
+
+.list-table .list-table-data .data.title .notes .text {
+    color: var(--text-secondary) !important;
+    font-size: 12px !important;
+}
+
+.list-table .list-table-data .data.title .notes .edit {
+    color: var(--text-muted) !important;
+    font-size: 11px !important;
+    opacity: 0 !important;
+    transition: opacity 0.16s ease, color 0.16s ease !important;
+}
+
+.list-table .list-table-data:hover .data.title .notes .edit,
+.list-table .list-table-data:focus-within .data.title .notes .edit {
+    opacity: 1 !important;
+}
+
+.list-table .list-table-data .data.title .notes .edit:hover {
+    color: var(--accent) !important;
+}
+
+/* Tombol Edit & More */
+.list-table .list-table-data .data.title .add-edit-more {
+    float: right !important;
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    margin-left: 14px !important;
+    opacity: 0 !important;
+    transition: opacity 0.16s ease !important;
+}
+
+.list-table .list-table-data:hover .data.title .add-edit-more,
+.list-table .list-table-data:focus-within .data.title .add-edit-more {
+    opacity: 1 !important;
+}
+
+.list-table .list-table-data .data.title .add-edit-more a {
+    color: var(--text-secondary) !important;
+    text-decoration: none !important;
+}
+
+.list-table .list-table-data .data.title .add-edit-more a:hover {
+    color: var(--accent) !important;
+}
+
+/* Skor (Serif Editorial + Warm Amber) */
+.list-table .list-table-data .data.score {
+    font-family: var(--font-display) !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    font-variant-numeric: tabular-nums !important;
+    text-align: center !important;
+    width: 72px !important;
+}
+
+.list-table .list-table-data .data.score a,
+.list-table .list-table-data .data.score .score-label {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+}
+
+.list-table .list-table-data .data.score .score-na {
+    color: var(--text-muted) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+}
+
+/* Tipe (TV, Movie, OVA, ONA, Manga, Novel) */
+.list-table .list-table-data .data.type {
+    color: var(--text-secondary) !important;
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    width: 78px !important;
+}
+
+/* Progres Episode (Anime) & Chapters / Volumes (Manga) */
+.list-table .list-table-data .data.progress,
+.list-table .list-table-data .data.chapter,
+.list-table .list-table-data .data.volume {
+    color: var(--text-secondary) !important;
+    font-size: 13px !important;
+    font-variant-numeric: tabular-nums !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    width: 96px !important;
+}
+
+.list-table .list-table-data .data.progress a,
+.list-table .list-table-data .data.progress span,
+.list-table .list-table-data .data.chapter a,
+.list-table .list-table-data .data.chapter span,
+.list-table .list-table-data .data.volume a,
+.list-table .list-table-data .data.volume span {
+    color: var(--text-secondary) !important;
+    text-decoration: none !important;
+}
+
+.list-table .list-table-data .data.progress .icon-add-episode,
+.list-table .list-table-data .data.chapter .icon-add-chapter,
+.list-table .list-table-data .data.volume .icon-add-volume {
+    color: var(--text-muted) !important;
+    margin-left: 6px !important;
+    opacity: 0 !important;
+    transition: opacity 0.16s ease, color 0.16s ease !important;
+}
+
+.list-table .list-table-data:hover .data.progress .icon-add-episode,
+.list-table .list-table-data:focus-within .data.progress .icon-add-episode,
+.list-table .list-table-data:hover .data.chapter .icon-add-chapter,
+.list-table .list-table-data:focus-within .data.chapter .icon-add-chapter,
+.list-table .list-table-data:hover .data.volume .icon-add-volume,
+.list-table .list-table-data:focus-within .data.volume .icon-add-volume {
+    opacity: 1 !important;
+}
+
+.list-table .list-table-data .data.progress .icon-add-episode:hover,
+.list-table .list-table-data .data.chapter .icon-add-chapter:hover,
+.list-table .list-table-data .data.volume .icon-add-volume:hover {
+    color: var(--accent) !important;
+}
+
+/* Inline Quick-Edit Controls (Score, Progress, Notes) */
+.list-table .list-table-data .data.score select,
+.list-table .list-table-data .data.progress input,
+.list-table .list-table-data .data.chapter input,
+.list-table .list-table-data .data.volume input,
+.list-table .list-table-data .data.title .notes textarea {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 5px !important;
+    box-sizing: border-box !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 12px !important;
+    outline: none !important;
+    padding: 3px 6px !important;
+    transition: border-color 0.16s ease, box-shadow 0.16s ease !important;
+}
+
+.list-table .list-table-data .data.score select {
+    max-width: 64px !important;
+    width: 100% !important;
+}
+
+.list-table .list-table-data .data.score select:focus,
+.list-table .list-table-data .data.progress input:focus,
+.list-table .list-table-data .data.chapter input:focus,
+.list-table .list-table-data .data.volume input:focus,
+.list-table .list-table-data .data.title .notes textarea:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 2px var(--accent-soft) !important;
+}
+
+/* --- 7. EXPANDABLE "MORE INFO" --- */
+.list-table .more-info {
+    background-color: var(--bg-surface) !important;
+    border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+.list-table .more-info .more-content {
+    color: var(--text-secondary) !important;
+    font-size: 12.5px !important;
+    line-height: 1.65 !important;
+    padding: 16px 20px !important;
+}
+
+.list-table .more-info a {
+    color: var(--accent) !important;
+}
+
+/* --- 8. FLOATING SIDE MENU --- */
+.list-menu-float {
+    border: none !important;
+    opacity: 0.35 !important;
+    overflow: visible !important;
+    transition: opacity 0.2s ease !important;
+    width: 44px !important;
+}
+
+.list-menu-float:hover {
+    opacity: 1 !important;
+}
+
+.list-menu-float .icon-menu {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-left: none !important;
+    border-top: none !important;
+    box-sizing: border-box !important;
+    height: 44px !important;
+    transition: width 0.2s ease, background-color 0.2s ease, border-radius 0.2s ease !important;
+    width: 44px !important;
+}
+
+.list-menu-float .icon-menu:first-child {
+    border-top: 1px solid var(--border-subtle) !important;
+    border-top-right-radius: 8px !important;
+}
+
+.list-menu-float .icon-menu:last-child {
+    border-bottom-right-radius: 8px !important;
+}
+
+.list-menu-float .icon-menu:hover {
+    background-color: var(--bg-hover) !important;
+    border-radius: 0 8px 8px 0 !important;
+    width: 155px !important;
+}
+
+.list-menu-float .icon-menu.profile:hover {
+    border-radius: 0 8px 0 0 !important;
+    width: 44px !important;
+}
+
+.list-menu-float .icon-menu .text {
+    color: var(--text-primary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+.list-menu-float .icon-menu svg.icon {
+    fill: var(--text-secondary) !important;
+}
+
+.list-menu-float .icon-menu:hover svg.icon {
+    fill: var(--accent) !important;
+}
+
+/* --- 9. EDIT MODAL FRAME (FANCYBOX) --- */
+#fancybox-overlay {
+    background-color: #08090c !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    backdrop-filter: blur(4px) !important;
+    opacity: 0.78 !important;
+}
+
+.fancybox-bg {
+    display: none !important;
+}
+
+#fancybox-outer {
+    background-color: #121212 !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.72) !important;
+}
+
+#fancybox-content,
+#fancybox-inner {
+    border-color: transparent !important;
+    border-radius: 9px !important;
+    overflow: hidden !important;
+}
+
+#fancybox-frame {
+    border-radius: 9px !important;
+}
+
+#fancybox-close {
+    background: var(--bg-surface) !important;
+    background-image: none !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.55) !important;
+    box-sizing: border-box !important;
+    color: var(--text-secondary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    height: 30px !important;
+    line-height: 28px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease !important;
+    width: 30px !important;
+}
+
+#fancybox-close::after {
+    content: '×' !important;
+}
+
+#fancybox-close:hover {
+    background: var(--bg-hover) !important;
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+}
+
+/* --- 10. LOADING, FOOTER & SCROLLBAR --- */
+.list-unit .loading-space {
+    background-color: transparent !important;
+    color: var(--text-muted) !important;
+    font-size: 12px !important;
+    padding: 24px 0 !important;
+}
+
+#footer-block {
+    background-color: var(--bg-page) !important;
+    border-top: 1px solid var(--border-subtle) !important;
+    padding: 24px 0 !important;
+}
+
+#copyright {
+    color: var(--text-muted) !important;
+    font-size: 11px !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #292d38;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3e4454;
+}
+
+/* --- 11. KOLOM TAMBAHAN YANG DISEMBUNYIKAN --- */
+.header-title.tags,
+.data.tags,
+.header-title.season,
+.data.season,
+.header-title.studio,
+.data.studio,
+.header-title.licensor,
+.data.licensor,
+.header-title.started,
+.data.started,
+.header-title.finished,
+.data.finished,
+.header-title.airing-started,
+.data.airing-started,
+.header-title.airing-finished,
+.data.airing-finished,
+.header-title.days,
+.data.days,
+.header-title.rated,
+.data.rated,
+.header-title.storage,
+.data.storage,
+.header-title.priority,
+.data.priority,
+.header-title.genre,
+.data.genre,
+.header-title.demographic,
+.data.demographic,
+.header-title.retail,
+.data.retail,
+.icon-watch,
+.icon-watch2 {
+    display: none !important;
+}
+
+/* --- 12. RESPONSIVE & TOUCH --- */
+@media (hover: none) {
+    .list-table .list-table-data .data.title .notes .edit,
+    .list-table .list-table-data .data.title .add-edit-more,
+    .list-table .list-table-data .data.progress .icon-add-episode,
+    .list-table .list-table-data .data.chapter .icon-add-chapter,
+    .list-table .list-table-data .data.volume .icon-add-volume {
+        opacity: 0.75 !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .list-container,
+    .header {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
+    .header .header-title {
+        left: 14px !important;
+    }
+
+    .header .header-menu {
+        right: 14px !important;
+    }
+
+    .status-menu-container .search-container #search-box.open {
+        width: 145px !important;
+    }
+
+    .header-title.number,
+    .data.number,
+    .header-title.type,
+    .data.type,
+    .list-menu-float {
+        display: none !important;
+    }
+
+    .list-table .list-table-data .data.title .add-edit-more {
+        display: block !important;
+        float: none !important;
+        margin: 4px 0 0 !important;
+        opacity: 0.75 !important;
+    }
+
+    .list-table .list-table-data .data.title .notes .edit,
+    .list-table .list-table-data .data.progress .icon-add-episode,
+    .list-table .list-table-data .data.chapter .icon-add-chapter,
+    .list-table .list-table-data .data.volume .icon-add-volume {
+        opacity: 0.75 !important;
+    }
+}
