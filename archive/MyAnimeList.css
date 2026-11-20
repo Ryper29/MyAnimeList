@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* =====================================
+   SIMPLE PURPLE THEME – TABLE VERSION
+   ===================================== */
+
+/* 1. DASAR HALAMAN */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #14121d;
+    color: #e5e5f0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:focus-visible {
+    outline: 2px solid #723f8c;
+    outline-offset: 2px;
+}
+
+/* 2. CONTAINER LIST */
+
+#list-container,
+.list-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 0 40px;
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+}
+
+.list-block {
+    margin-top: 10px;
+}
+
+/* 3. BUANG HEADER YANG BIKIN RAMAI */
+
+/* Hilangkan status-menu versi fixed/besar di atas */
+.status-menu-container.fixed {
+    display: none !important;
+}
+
+/* Hilangkan judul besar "ALL ANIME", stats di sampingnya */
+.list-status-title,
+.list-status-title .text,
+.list-stats {
+    display: none !important;
+}
+
+/* 4. BAR MENU STATUS SEDERHANA (ALL / WATCHING / DLL) */
+
+.status-menu-container {
+    width: 100%;
+    background: #171329 !important;
+    border-bottom: 2px solid #723f8c !important;
+}
+
+.status-menu {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.status-menu .status-button {
+    padding: 0 14px !important;
+    height: 40px !important;
+    line-height: 40px !important;
+    font-size: 11px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #b8b1d9 !important;
+    border-bottom: 2px solid transparent;
+}
+
+/* Matikan efek bawaan MAL di :after */
+.status-menu .status-button:after {
+    content: none !important;
+}
+
+.status-menu .status-button.on,
+.status-menu .status-button:hover {
+    color: #ffffff !important;
+    border-bottom-color: #723f8c !important;
+}
+
+/* SEARCH biarkan simpel saja */
+.search-container {
+    margin-left: auto;
+}
+
+#search-box {
+    height: 26px;
+    border-radius: 16px;
+    border: 1px solid #262034;
+    background: #0f0d19;
+}
+
+#search-box input {
+    background: transparent;
+    border: none;
+    color: #e5e5f0;
+    font-size: 12px;
+}
+
+#search-button {
+    height: 26px;
+    border-radius: 16px;
+    border: 1px solid #262034;
+    background: #0f0d19;
+    color: #b8b1d9;
+}
+
+#search-button:hover {
+    background: #171326;
+    color: #f0e8ff;
+}
+
+/* 5. TABEL LIST */
+
+.list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Header kolom: #, Image, Title, Score, dll */
+.list-table-header {
+    background: #1e1a30 !important;
+    color: #cfc8ee !important;
+}
+
+.list-table-header .header-title {
+    padding: 8px;
+    font-weight: 500;
+    border-bottom: 1px solid #262034;
+}
+
+/* 6. BARIS DATA */
+
+.list-table .list-table-data {
+    background: #181422;
+    border-bottom: 1px solid #262034;
+}
+
+.list-table .list-table-data:nth-child(even) {
+    background: #1b1629;
+}
+
+.list-table .list-table-data:hover {
+    background: #221a37;
+}
+
+/* Judul anime */
+.data.title .link {
+    color: #f7f5ff;
+}
+
+.data.title .link:hover {
+    color: #c09bfd;
+}
+
+/* Score, type, status, progress */
+.data.score,
+.data.type,
+.data.status,
+.data.progress,
+.data.chapter,
+.data.volume {
+    color: #d7cffc;
+}
+
+.data.status {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #b3acd5;
+}
+
+.data.score {
+    font-weight: 500;
+}
+
+/* Tags / notes */
+.data.tags,
+.notes {
+    color: #9f96c9;
+    font-size: 11px;
+}
+
+/* 7. FOOTER */
+
+footer {
+    width: 100%;
+    padding: 16px 0 20px;
+    background: #14121d;
+    border-top: 1px solid #262034;
+}
+
+#footer-block,
+#copyright {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: #6e648f;
+    font-size: 11px;
+}
